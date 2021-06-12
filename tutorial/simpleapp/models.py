@@ -10,6 +10,9 @@ class Product(models.Model):
         validators=[MinValueValidator(0, 'Quantity should be >= 0')])  # количество товара на складе
     # поле категории будет ссылаться на модель категории
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    price = models.FloatField(
+        validators=[MinValueValidator(0.0)],
+    )
 
     def __str__(self):
         return f'{self.name} {self.quantity}'
